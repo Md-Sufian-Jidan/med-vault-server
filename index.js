@@ -51,6 +51,11 @@ async function run() {
             res.send(result);
         });
 
+        app.get('/users', verifyToken, verifyToken, async (req, res) => {
+            const result = await userCollection.find().toArray();
+            res.send(result);
+        });
+
         app.get('/doctors', async (req, res) => {
             const result = await doctorCollection.find().toArray();
             res.send(result);
@@ -63,11 +68,6 @@ async function run() {
             res.send(result);
         });
 
-        app.get('/reviews', async (req, res) => {
-            const result = await reviewCollection.find().toArray();
-            res.send(result);
-        });
-        
         app.get('/reviews', async (req, res) => {
             const result = await reviewCollection.find().toArray();
             res.send(result);
